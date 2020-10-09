@@ -10,13 +10,28 @@ Lägg märke till att ni måste hantera mellanslag. "Ni talar bra latin" är t e
 
 */
 
-function is_palindrome() {
+function is_palindrome(str) {
+    let charToIgnore = /[\W_]/g; //everything that is not a 'normal charachter'
+    str = str.replace(charToIgnore, '');
+    for (let i = 0; i < str.length; i++) {
+        if (str[i] !== str[str.length - 1 - i]) {
+            return false;
+        }
+    }
+    return true;
+}   
 
-}
-
-let test_string = 'sirap i paris';
-if ( is_palindrome( test_string ) ) {
-    console.log( test_string + " is a palindrome" );
+let test_string = 'sirap från paris';
+if (is_palindrome(test_string)) {
+    console.log(test_string + " is a palindrome");
 } else {
-    console.log( test_string + " is NOT a palindrome" );
+    console.log(test_string + " is NOT a palindrome");
 }
+
+test_string = 'sirap i paris';
+if (is_palindrome(test_string)) {
+    console.log(test_string + " is a palindrome");
+} else {
+    console.log(test_string + " is NOT a palindrome");
+}
+ 
